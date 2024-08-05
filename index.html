@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>yewwwww</title>
+    </head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            overflow: hidden
+        }
+        
+        body {
+            height: 100vh;
+            background: radial-gradient(ellipse at bottom,
+                    #1b2735 0, #090a0f 100%);
+            filter: drop-shadow(0 0 10px white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .snow {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #fff;
+            position: absolute;
+        }
+        .words
+        {
+            position: fixed;
+            left: 50%;
+            top:30%;
+            transform: translate(-50%,-50%);
+            color: #fff;
+            font-size: 1.5em;
+            line-height: 2em;
+            font-weight: 500;
+            display: flex;
+            flex-wrap: wrap;
+            width: 1000px;
+           
+        }
+        .img-con{
+            left: 0;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            top: 25%;
+            display: none;
+            height: 80%;
+            z-index: -1;
+        }
+        img{
+            height: 60%;
+            border-radius:8px ;
+        }
+        .img-con > img{
+            margin: 0 auto;
+        }
+        .words  span{
+            animation: jumpin 0.5s ease-out both;
+            
+        }
+        @keyframes jumpin {
+            from{
+                transform: translateY(-20%);
+                opacity: 0;
+            }
+            to{
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        strong {
+            color: red;
+        }
+
+        h3 {
+            z-index: 99;
+            font-weight: 200;
+            font-size: 26px;
+            padding: 0;
+            margin: 0;
+            line-height: 1;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+        
+        h1.STARDUST2 {
+            text-align: center;
+            top: 12px;
+            position: relative !important;
+            color: #d72b2b;
+        }
+        .STARDUST1 {
+            position: relative !important;
+            text-align: center;
+           
+        }
+
+        .STARDUST3 {
+            position: relative !important;
+            text-align: center;
+            top: 20px;
+        }
+
+        @media (max-width: 990px){
+            .words {
+                font-size: 1.1em;
+                width: 90%;
+                top: 50%;
+            }
+            .img-con{
+                width: 100%;
+                top: 16%;
+                height: 120%;
+                
+            }
+            
+        }
+        .hii{
+            display: none;
+        }
+
+        
+button.start {
+  width: 300px;
+  height: 80px;
+  font-size: 3rem;
+  border-radius: 8px;
+  color: #fff;
+  background: #2b71a3;
+}
+
+
+.background {
+  background-color: #000;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+        </style>
+    <body>
+        
+        <p class="words">
+            Đếm_nào ,
+            1 
+            2
+            3
+            4
+            5
+            6
+            7
+            8
+            9
+            10
+            11
+            12
+            13
+            14
+            15
+            16
+            17
+            18
+            19
+            20
+            
+        </p>
+        <audio  id="autoplay" src="H.mp3"></audio>
+        <h3 class="STARDUST1"><strong>2024</strong> </h3>
+
+        <h3 class="STARDUST3"><strong>❤</strong> Cuộc đời sẽ thật đẹp nếu như anh có em  <strong>❤</strong> </h3>
+        </h1>
+        <div class="img-con">
+            <img class="Hlides" src="anh/6.jpg"/>
+            <img class="Hlides" src="anh/1.jpg"/>
+            <img class="Hlides" src="anh/2.jpg"/>
+            <img class="Hlides" src="anh/3.jpg"/>
+            <img class="Hlides" src="anh/4.jpg"/>
+            <img class="Hlides" src="anh/5.jpg"/>
+		    <img class="Hlides" src="anh/10.jpg"/>
+            <img class="Hlides" src="anh/7.jpg"/>
+            <img class="Hlides" src="anh/8.jpg"/>
+            <img class="Hlides" src="anh/9.jpg"/>
+            <img class="Hlides" src="anh/11.jpg"/>
+            <img class="Hlides" src="anh/12.jpg"/>
+            <img class="Hlides" src="anh/13.jpg"/>
+            <img class="Hlides" src="anh/14.jpg"/>
+            <img class="Hlides" src="anh/15.jpg"/>
+		    <img class="Hlides" src="anh/16.jpg"/>
+            <img class="Hlides" src="anh/17.jpg"/>
+            <img class="Hlides" src="anh/18.jpg"/>
+            <img class="Hlides" src="anh/19.jpg"/>
+
+        </div>
+
+        <div class="background">
+            <button class="start" onclick="start()">Bắt đầu</button>
+        </div>
+    </body>
+</html>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+
+$(function () {
+    
+    $(".words").hide();
+    $(".STARDUST2").hide();
+    $(".STARDUST3").hide();
+
+
+})
+
+   function start() { 
+    document.getElementById('autoplay').play();
+    $(".words").show();
+    carousel();  
+    $(".background").hide();
+    $(".start").hide(); 
+       var words=$(".words").text().split("");
+
+       $(".words").empty();
+       words.forEach((w,i)=>{
+
+           $(`<span>${w}</span>`).css({
+               "animation-delay": 0.1*i+'s'
+           }).appendTo($(".words"));
+       });
+       for(var i=0;i<200;i++)
+	       {
+	           var x=Math.random()*100;
+	           var y=Math.random()*100;
+
+
+	           var scale=Math.random();
+	           var opacity=Math.random();
+	           var t1=Math.random()*20+10;
+	           var t2=Math.random()*30;
+	
+	           var o=Math.random()*20-10;
+	           var x1=x+o;
+	           var x2=x+o/2;
+
+	           $(`<style> @keyframes fall${i} {
+	       ${y}%{
+	           transform: translate(${x1}vw, ${y}vh) scale(${scale});
+	       }
+	       to{
+	           transform: translate(${x2}vw,99vh) scale(${scale});
+	       }
+	   }
+	    </style>`).appendTo($("head"));
+
+        $('<div class="snow"></div>')
+            .css({
+                "transform": `translate(${x}vw, -10px) scale(${scale})`,
+                "opacity": opacity,
+                "animation": `fall${i} ${t1}s -${t2}s linear infinite`
+            }).appendTo($("body")).end()
+                setTimeout(()=>{
+                    $(".words").hide();
+                    $(".STARDUST2").show();
+                    $(".STARDUST3").show();
+
+                    
+                    $(".img-con").fadeIn(2000);
+                },15000)
+        }
+   }
+</script>
+<script>
+   
+    var slideIndex = 0;
+
+
+function carousel() {
+
+  var i;
+  var x = document.getElementsByClassName("Hlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > x.length) {slideIndex = 1}
+  x[slideIndex-1].style.display = "block";
+  setTimeout(carousel, 2000); 
+}
+</script>
+
+
+
+
