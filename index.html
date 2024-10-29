@@ -179,27 +179,9 @@ button.start {
 
         <h3 class="STARDUST3"><strong>❤</strong> Cứ bị rất nhớ em ấy!  <strong>❤</strong> </h3>
         </h1>
-        <div class="img-con">
-            <img class="Hlides" src="anh/6.jpg"/>
-            <img class="Hlides" src="anh/1.jpg"/>
-            <img class="Hlides" src="anh/2.jpg"/>
-            <img class="Hlides" src="anh/3.jpg"/>
-            <img class="Hlides" src="anh/4.jpg"/>
-            <img class="Hlides" src="anh/5.jpg"/>
-		    <img class="Hlides" src="anh/10.jpg"/>
-            <img class="Hlides" src="anh/7.jpg"/>
-            <img class="Hlides" src="anh/8.jpg"/>
-            <img class="Hlides" src="anh/9.jpg"/> 
-             <img class="Hlides" src="anh/11.jpg"/>
-            <img class="Hlides" src="anh/12.jpg"/>
-            <img class="Hlides" src="anh/13.jpg"/>
-            <img class="Hlides" src="anh/14.jpg"/>
-            <img class="Hlides" src="anh/15.jpg"/>
-		    <img class="Hlides" src="anh/16.jpg"/>
-            <img class="Hlides" src="anh/17.jpg"/>
-            <img class="Hlides" src="anh/18.jpg"/>
-            <img class="Hlides" src="anh/19.jpg"/>
-
+        <div class="img-con" id="imageContainer">
+            
+           
         </div>
 
         <div class="background">
@@ -211,6 +193,25 @@ button.start {
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <script>
 
+
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; 
+    }
+    return array;
+}
+
+const images = Array.from({ length: 38 }, (_, i) => i + 1);
+const shuffledImages = shuffle(images);
+for (let i = 0; i < shuffledImages.length; i++) {
+    const img = document.createElement('img');
+    img.className = 'Hlides';
+    img.src = `anh/${shuffledImages[i]}.jpg`; 
+    document.getElementById('imageContainer').appendChild(img); 
+}
+
+
 $(function () {
     
     $(".words").hide();
@@ -220,62 +221,65 @@ $(function () {
 
 })
 
-   function start() { 
-    document.getElementById('autoplay').play();
+function start() { 
+    var audio = document.getElementById('autoplay');
+    audio.play();
+    
     $(".words").show();
     carousel();  
     $(".background").hide();
     $(".start").hide(); 
-       var words=$(".words").text().split("");
 
-       $(".words").empty();
-       words.forEach((w,i)=>{
+    var words = $(".words").text().split("");
+    $(".words").empty();
+    
+    words.forEach((w, i) => {
+        $(`<span>${w}</span>`).css({
+            "animation-delay": 0.1 * i + 's'
+        }).appendTo($(".words"));
+    });
 
-           $(`<span>${w}</span>`).css({
-               "animation-delay": 0.1*i+'s'
-           }).appendTo($(".words"));
-       });
-       for(var i=0;i<200;i++)
-	       {
-	           var x=Math.random()*100;
-	           var y=Math.random()*100;
+    for (var i = 0; i < 200; i++) {
+        var x = Math.random() * 100;
+        var y = Math.random() * 100;
+        var scale = Math.random();
+        var opacity = Math.random();
+        var t1 = Math.random() * 20 + 10;
+        var t2 = Math.random() * 30;
+        var o = Math.random() * 20 - 10;
+        var x1 = x + o;
+        var x2 = x + o / 2;
 
-
-	           var scale=Math.random();
-	           var opacity=Math.random();
-	           var t1=Math.random()*20+10;
-	           var t2=Math.random()*30;
-	
-	           var o=Math.random()*20-10;
-	           var x1=x+o;
-	           var x2=x+o/2;
-
-	           $(`<style> @keyframes fall${i} {
-	       ${y}%{
-	           transform: translate(${x1}vw, ${y}vh) scale(${scale});
-	       }
-	       to{
-	           transform: translate(${x2}vw,99vh) scale(${scale});
-	       }
-	   }
-	    </style>`).appendTo($("head"));
+        $(`<style> @keyframes fall${i} {
+            ${y}% {
+                transform: translate(${x1}vw, ${y}vh) scale(${scale});
+            }
+            to {
+                transform: translate(${x2}vw, 99vh) scale(${scale});
+            }
+        }
+        </style>`).appendTo($("head"));
 
         $('<div class="snow"></div>')
             .css({
                 "transform": `translate(${x}vw, -10px) scale(${scale})`,
                 "opacity": opacity,
                 "animation": `fall${i} ${t1}s -${t2}s linear infinite`
-            }).appendTo($("body")).end()
-                setTimeout(()=>{
-                    $(".words").hide();
-                    $(".STARDUST2").show();
-                    $(".STARDUST3").show();
+            }).appendTo($("body"));
+    }
 
-                    
-                    $(".img-con").fadeIn(2000);
-                },15000)
-        }
-   }
+    // Thêm sự kiện để chuyển trang khi nhạc kết thúc
+    audio.addEventListener('ended', function() {
+        window.location.href = 'new-page.html'; // Thay đổi 'new-page.html' thành trang bạn muốn chuyển đến
+    });
+
+    setTimeout(() => {
+        $(".words").hide();
+        $(".STARDUST2").show();
+        $(".STARDUST3").show();
+        $(".img-con").fadeIn(2000);
+    }, 15000);
+}
 </script>
 <script>
    
