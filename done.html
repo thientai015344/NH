@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .giuamanghinh{
+        margin: auto ;
+    }
+    .giuamanghinh {
+    margin: 50% auto;
+    text-align: justify;
+}
+#demo {
+    text-align: justify;
+    font: 1em sans-serif;
+    font-weight: bold;
+    line-height: 30px;
+    
+}
+</style>
+<body>
+
+    <div class="giuamanghinh">
+
+    </div>
+
+    <p id="demo"></p>
+    
+</body>
+
+<script>
+    var i = 0;
+var noiDung = 'cảm ơn em đã xem đến đây <3 ...................................... Đáng lý ra cái này được gửi cho em vào 3 hôm trước nhưng vì một số lý do không làm kịp nên tới nay mới hoàn thành và gửi được cho em cảm ơn em về mọi thứ <3';
+var tocDo = 100;
+
+function hieuUngDanhChu() {
+  if (i < noiDung.length) {
+    document.getElementById("demo").innerHTML += noiDung.charAt(i);
+    i++;
+    setTimeout(hieuUngDanhChu, tocDo);
+  }
+}
+hieuUngDanhChu()
+</script>
+</html>

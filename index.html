@@ -185,7 +185,7 @@ button.start {
         </div>
 
         <div class="background">
-            <button class="start" onclick="start()">Bấm vào đây nè!</button>
+            <button class="start" onclick="start()">Tiếp nè</button>
         </div>
     </body>
 </html>
@@ -270,7 +270,7 @@ function start() {
 
     // Thêm sự kiện để chuyển trang khi nhạc kết thúc
     audio.addEventListener('ended', function() {
-        window.location.href = 'new-page.html'; // Thay đổi 'new-page.html' thành trang bạn muốn chuyển đến
+        window.location.href = 'done.html'; // Thay đổi 'new-page.html' thành trang bạn muốn chuyển đến
     });
 
     setTimeout(() => {
